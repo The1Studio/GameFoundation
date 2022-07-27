@@ -8,7 +8,6 @@ namespace GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow
     using GameFoundation.Scripts.BlueprintFlow.BlueprintReader;
     using GameFoundation.Scripts.BlueprintFlow.Signals;
     using GameFoundation.Scripts.GameManager;
-    using GameFoundation.Scripts.Network.WebService;
     using GameFoundation.Scripts.Utilities.Extension;
     using GameFoundation.Scripts.Utilities.LogService;
     using UnityEngine;
@@ -20,15 +19,14 @@ namespace GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow
     public class BlueprintReaderManager
     {
         public BlueprintReaderManager(SignalBus signalBus, ILogService logService, DiContainer diContainer,
-            GameFoundationLocalData localData, HandleLocalDataServices handleLocalDataServices,
-            IHttpService httpService, BlueprintConfig blueprintConfig)
+            GameFoundationLocalData localData, HandleLocalDataServices handleLocalDataServices, BlueprintDownloader blueprintDownloader, BlueprintConfig blueprintConfig)
         {
             this.signalBus               = signalBus;
             this.logService              = logService;
             this.diContainer             = diContainer;
             this.localData               = localData;
             this.handleLocalDataServices = handleLocalDataServices;
-            this.httpService             = httpService;
+            this.blueprintDownloader     = blueprintDownloader;
             this.blueprintConfig         = blueprintConfig;
         }
 
@@ -37,14 +35,7 @@ namespace GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow
             if (!this.IsLoadLocalBlueprint(url, hash))
             {
                 //Download new blueprints version from remote
-                var progressSignal = new LoadBlueprintDataProgressSignal();
-                await this.httpService.Download(url,
-                    string.Format(this.blueprintConfig.BlueprintZipFilename,
-                        this.blueprintConfig.CurrentBlueprintVersion), (downloaded, length) =>
-                    {
-                        progressSignal.percent = downloaded / (float)length * 100f;
-                        this.signalBus.Fire(progressSignal);
-                    });
+                await this.blueprintDownloader.DownloadBlueprintAsync(url);
 
                 this.localData.BlueprintModel.BlueprintDownloadUrl = url;
                 this.handleLocalDataServices.Save(this.localData, true);
@@ -178,7 +169,7 @@ namespace GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow
         private readonly DiContainer                diContainer;
         private readonly GameFoundationLocalData    localData;
         private readonly HandleLocalDataServices    handleLocalDataServices;
-        private readonly IHttpService               httpService;
+        private readonly BlueprintDownloader        blueprintDownloader;
         private          Dictionary<string, string> listRawBlueprints;
         private readonly BlueprintConfig            blueprintConfig;
 

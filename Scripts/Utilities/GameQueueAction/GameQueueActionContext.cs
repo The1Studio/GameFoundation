@@ -5,6 +5,7 @@ namespace GameFoundation.Scripts.Utilities.GameQueueAction
     using GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter;
     using GameFoundation.Scripts.ScreenFlow.Managers;
     using UnityEngine.Playables;
+    using Zenject;
 
     public class GameQueueActionContext
     {
@@ -42,23 +43,21 @@ namespace GameFoundation.Scripts.Utilities.GameQueueAction
 
         public IGameQueueAction AddScreenToQueueAction<T>(string actionId = "", string location = "") where T : IScreenPresenter
         {
-            var action = new ShowPopupQueueAction<T>(this.screenManager, string.IsNullOrEmpty(actionId) ? $"ShowScreen_{typeof(T).Name}" : actionId,this.GetCurrentLocation(location));
+            var action = new ShowPopupQueueAction<T>(this.screenManager, string.IsNullOrEmpty(actionId) ? $"ShowScreen_{typeof(T).Name}" : actionId, this.GetCurrentLocation(location));
             this.gameQueueActionServices.Append(action);
             return action;
         }
 
         public IGameQueueAction AddScreenToQueueAction<TPresenter, TModel>(TModel model, string actionId = "", string location = "") where TPresenter : IScreenPresenter<TModel>
         {
-            var action = new ShowPopupQueueAction<TPresenter, TModel>(this.screenManager,string.IsNullOrEmpty(actionId) ? $"ShowScreen_{typeof(TPresenter).Name}" : actionId, this.GetCurrentLocation(location));
+            var action = new ShowPopupQueueAction<TPresenter, TModel>(this.screenManager, string.IsNullOrEmpty(actionId) ? $"ShowScreen_{typeof(TPresenter).Name}" : actionId,
+                this.GetCurrentLocation(location));
             action.SetState(model);
             this.gameQueueActionServices.Append(action);
             return action;
         }
 
-        private string GetCurrentLocation(string location)
-        {
-            return string.IsNullOrEmpty(location) ? this.screenManager.CurrentActiveScreen.Value.ScreenId : location;
-        }
+        private string GetCurrentLocation(string location) { return string.IsNullOrEmpty(location) ? this.screenManager.CurrentActiveScreen.Value.ScreenId : location; }
 
         public IGameQueueAction AddTimelineToQueueAction<T>(T timeline, string actionId, string location) where T : PlayableDirector
         {
@@ -81,3 +80,4 @@ namespace GameFoundation.Scripts.Utilities.GameQueueAction
         }
     }
 }
+

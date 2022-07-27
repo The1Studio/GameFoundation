@@ -1,6 +1,5 @@
 namespace GameFoundation.Scripts.GameManager
 {
-    using GameFoundation.Scripts.Network.Authentication;
     using UniRx;
 
     /// <summary>
@@ -18,7 +17,6 @@ namespace GameFoundation.Scripts.GameManager
 
     public class UserDataLogin
     {
-        public TypeLogIn  LastLogin     { get; set; }
         public LoginModel FacebookLogin { get; set; } = new LoginModel();
         public LoginModel GoogleLogin   { get; set; } = new LoginModel();
     }

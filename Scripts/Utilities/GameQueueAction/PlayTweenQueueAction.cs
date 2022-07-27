@@ -4,25 +4,25 @@ namespace GameFoundation.Scripts.Utilities.GameQueueAction
 
     public class PlayTweenQueueAction : BaseQueueAction
     {
-        private Tween _tween;
+        private Tween tween;
 
         public PlayTweenQueueAction(Tween tween, string actionId, string location) : base(actionId, location)
         {
-            this._tween = tween;
-            TweenExtensions.Pause(this._tween);
+            this.tween = tween;
+            TweenExtensions.Pause(this.tween);
         }
 
         public override void Execute()
         {
-            this._tween.OnComplete(this.Complete);
-            this._tween.OnKill(this.Complete);
+            this.tween.OnComplete(this.Complete);
+            this.tween.OnKill(this.Complete);
             base.Execute();
         }
 
         protected override void Action()
         {
             base.Action();
-            TweenExtensions.Play(this._tween);
+            TweenExtensions.Play(this.tween);
         }
     }
 }
