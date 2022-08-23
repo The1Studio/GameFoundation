@@ -76,6 +76,11 @@ namespace GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow
         private async UniTask<Dictionary<string, string>> UnzipBlueprint()
         {
             var result = new Dictionary<string, string>();
+            if (!File.Exists(this.blueprintConfig.BlueprintZipFilepath))
+            {
+                return result;
+            }
+
             using (var archive = ZipFile.OpenRead(this.blueprintConfig.BlueprintZipFilepath))
             {
                 foreach (var entry in archive.Entries)
@@ -95,8 +100,7 @@ namespace GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow
             if (!File.Exists(this.blueprintConfig.BlueprintZipFilepath))
             {
                 this.logService.Error(
-                    $"[BlueprintReader] {this.blueprintConfig.BlueprintZipFilepath} is not exists!!!");
-                return UniTask.CompletedTask;
+                    $"[BlueprintReader] {this.blueprintConfig.BlueprintZipFilepath} is not exists!!!, Continue load from resource");
             }
 
             var listReadTask    = new List<UniTask>();
