@@ -17,10 +17,11 @@ namespace GameFoundation.Scripts.ScreenFlow.Managers
         
         public override void InstallBindings()
         {
+            //todo this should be setup automatically
+            if(this.rootUICanvas == null) return;
             this.screenManager.CurrentRootScreen  = this.rootUICanvas.RootUIShowTransform;
             this.screenManager.CurrentHiddenRoot  = this.rootUICanvas.RootUIClosedTransform;
             this.screenManager.CurrentOverlayRoot = this.rootUICanvas.RootUIOverlayTransform;
-            this.screenManager.Instantiator       = this.Container;
         }
     }
 }

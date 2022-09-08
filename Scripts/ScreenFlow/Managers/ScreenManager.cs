@@ -61,12 +61,7 @@ namespace GameFoundation.Scripts.ScreenFlow.Managers
         /// Get overlay transform
         /// </summary>
         public Transform CurrentOverlayRoot { get; set; }
-
-        /// <summary>
-        /// Reference to low level DiContainer follow scene
-        /// </summary>
-        public IInstantiator Instantiator { get; set; }
-
+        
         /// <summary>
         /// Current screen shown on top.
         /// </summary>
@@ -131,6 +126,10 @@ namespace GameFoundation.Scripts.ScreenFlow.Managers
 
         #region Implement IScreenManager
 
+        public Transform CurrentRootScreen  { get; set; }
+        public Transform CurrentHiddenRoot  { get; set; }
+        public Transform CurrentOverlayRoot { get; set; }
+        
         public async UniTask<T> OpenScreen<T>() where T : IScreenPresenter
         {
             var nextScreen = await this.GetScreen<T>();
@@ -179,7 +178,7 @@ namespace GameFoundation.Scripts.ScreenFlow.Managers
 
             async Task<IScreenPresenter> InstantiateScreen()
             {
-                screenPresenter = this.Instantiator.Instantiate<T>();
+                screenPresenter = this.GetCurrentContainer().Instantiate<T>();
                 var screenInfo = screenPresenter.GetCustomAttribute<ScreenInfoAttribute>();
 
                 var viewObject = Instantiate(await this.gameAssets.LoadAssetAsync<GameObject>(screenInfo.AddressableScreenPath),
@@ -221,10 +220,6 @@ namespace GameFoundation.Scripts.ScreenFlow.Managers
 
             this.typeToLoadedScreenPresenter.Clear();
         }
-        public Transform     CurrentRootScreen  { get; set; }
-        public Transform     CurrentHiddenRoot  { get; set; }
-        public Transform     CurrentOverlayRoot { get; set; }
-        public IInstantiator Instantiator       { get; set; }
 
         #endregion
 
