@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.Utilities.GameQueueAction
+namespace GameFoundation.Scripts.UIModule.Utilities.GameQueueAction
 {
     using DG.Tweening;
 

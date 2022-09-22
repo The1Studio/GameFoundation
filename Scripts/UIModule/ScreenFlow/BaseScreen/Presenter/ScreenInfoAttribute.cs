@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter
 {
     using System;
 

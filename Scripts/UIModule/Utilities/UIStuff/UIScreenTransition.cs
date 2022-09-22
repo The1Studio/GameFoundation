@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.Utilities.UIStuff
+namespace GameFoundation.Scripts.UIModule.Utilities.UIStuff
 {
     using Cysharp.Threading.Tasks;
     using UnityEngine;

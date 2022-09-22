@@ -1,6 +1,5 @@
-﻿namespace GameFoundation.Editor.ServerConfig
+﻿namespace GameFoundation.Scripts.Network.NetworkConfig
 {
-    using GameFoundation.Scripts.Network;
     using UnityEngine;
 
     [CreateAssetMenu(fileName = "GameConfig", menuName = "Mech/Game config")]

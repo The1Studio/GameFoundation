@@ -1,4 +1,4 @@
-﻿namespace GameFoundation.Scripts.MVP
+﻿namespace GameFoundation.Scripts.UIModule.MVP
 {
     using System;
     using Cysharp.Threading.Tasks;

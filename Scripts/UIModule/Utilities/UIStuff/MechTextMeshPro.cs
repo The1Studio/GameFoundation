@@ -1,5 +1,6 @@
-namespace GameFoundation.Scripts.Utilities.Extension
+namespace GameFoundation.Scripts.UIModule.Utilities.UIStuff
 {
+    using GameFoundation.Scripts.Utilities;
     using TMPro;
     using UnityEngine;
 

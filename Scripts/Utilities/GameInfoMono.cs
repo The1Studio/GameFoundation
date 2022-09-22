@@ -1,5 +1,6 @@
-﻿namespace GameFoundation.Scripts.GameManager
+﻿namespace GameFoundation.Scripts.Utilities
 {
+    using GameFoundation.Scripts.Models;
     using TMPro;
     using UnityEngine;
 

@@ -1,8 +1,9 @@
-namespace GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow
+namespace GameFoundation.Scripts.BlueprintFlow.Downloader
 {
     using System;
     using System.Net;
     using System.Threading.Tasks;
+    using GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow;
     using GameFoundation.Scripts.Utilities.LogService;
     using Zenject;
 

@@ -1,12 +1,12 @@
-
-using GameFoundation.Scripts.Utilities;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MechPointerEvent : BaseMechSFX,IPointerEnterHandler
+namespace GameFoundation.Scripts.UIModule.Utilities.UIStuff
 {
-    public void OnPointerEnter(PointerEventData eventData)
+    public class MechPointerEvent : BaseMechSFX,IPointerEnterHandler
     {
-        this.OnPlaySfx();
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            this.OnPlaySfx();
+        }
     }
 }

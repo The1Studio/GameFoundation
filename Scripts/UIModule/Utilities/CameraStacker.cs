@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Rendering.Universal;
-
-namespace GameFoundation.Scripts.Utilities
+namespace GameFoundation.Scripts.UIModule.Utilities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using UnityEngine;
+    using UnityEngine.Rendering.Universal;
+
     /// <summary>
     /// Manage camera stack between scenes for URP.
     /// Usage: add to a camera that is rendered to screen. This shouldn't be added to camera that renders to a <see cref="RenderTexture"/>.

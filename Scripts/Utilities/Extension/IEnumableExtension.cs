@@ -1,10 +1,11 @@
-namespace GameFoundation.Scripts.Utilities.Utils
+namespace GameFoundation.Scripts.Utilities.Extension
 {
     using System;
     using System.Buffers;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using GameFoundation.Scripts.Utilities.Utils;
 
     public static class ListExtensions
     {

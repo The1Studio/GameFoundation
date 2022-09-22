@@ -1,9 +1,9 @@
-﻿namespace GameFoundation.Scripts.Utilities
+﻿namespace GameFoundation.Scripts.UIModule.Utilities
 {
     using System.Collections.Generic;
     using Cysharp.Threading.Tasks;
-    using GameFoundation.Scripts.Adapter;
-    using GameFoundation.Scripts.MVP;
+    using GameFoundation.Scripts.UIModule.Adapter;
+    using GameFoundation.Scripts.UIModule.MVP;
     using Zenject;
 
     public static class ScrollViewAdapterExtension

@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.Network.ApiHandler
+namespace GameFoundation.Scripts.Network.Authentication.ApiHandler
 {
     using GameFoundation.Scripts.Network.Authentication;
     using GameFoundation.Scripts.Network.WebService;

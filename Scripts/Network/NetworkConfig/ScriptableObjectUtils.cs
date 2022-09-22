@@ -1,6 +1,5 @@
-﻿namespace GameFoundation.Scripts
+﻿namespace GameFoundation.Scripts.Network.NetworkConfig
 {
-    using GameFoundation.Scripts.Network;
     using UnityEngine;
 
     public static class ScriptableObjectUtils

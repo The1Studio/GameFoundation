@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.MVP
+namespace GameFoundation.Scripts.UIModule.MVP
 {
     /// <summary>
     /// represent the state of View

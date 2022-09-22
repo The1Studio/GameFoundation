@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.ScreenFlow.Managers
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.Managers
 {
     using UnityEngine;
 

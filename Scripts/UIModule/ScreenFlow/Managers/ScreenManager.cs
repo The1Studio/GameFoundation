@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.ScreenFlow.Managers
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.Managers
 {
     using System;
     using System.Collections.Generic;
@@ -6,10 +6,10 @@ namespace GameFoundation.Scripts.ScreenFlow.Managers
     using System.Threading.Tasks;
     using Cysharp.Threading.Tasks;
     using GameFoundation.Scripts.AssetLibrary;
-    using GameFoundation.Scripts.CommonScreen;
-    using GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter;
-    using GameFoundation.Scripts.ScreenFlow.BaseScreen.View;
-    using GameFoundation.Scripts.ScreenFlow.Signals;
+    using GameFoundation.Scripts.UIModule.CommonScreen;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.View;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Signals;
     using GameFoundation.Scripts.Utilities.Extension;
     using GameFoundation.Scripts.Utilities.LogService;
     using UniRx;

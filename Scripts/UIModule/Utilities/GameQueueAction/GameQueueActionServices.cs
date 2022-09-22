@@ -1,9 +1,8 @@
-namespace GameFoundation.Scripts.Utilities.GameQueueAction
+namespace GameFoundation.Scripts.UIModule.Utilities.GameQueueAction
 {
     using System.Collections.Generic;
-    using GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter;
-    using GameFoundation.Scripts.ScreenFlow.Managers;
-    using GameFoundation.Scripts.ScreenFlow.Signals;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
     using GameFoundation.Scripts.Utilities.Extension;
     using UniRx;
     using Zenject;

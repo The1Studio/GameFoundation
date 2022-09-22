@@ -2,10 +2,11 @@ namespace GameFoundation.Scripts.UIModule.Utilities
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using GameFoundation.Scripts.MVP;
-    using GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter;
-    using GameFoundation.Scripts.ScreenFlow.BaseScreen.View;
-    using GameFoundation.Scripts.ScreenFlow.Signals;
+    using GameFoundation.Scripts.UIModule.MVP;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.View;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Signals;
+    using GameFoundation.Scripts.UIModule.Utilities.UIStuff;
     using GameFoundation.Scripts.Utilities.Extension;
     using TMPro;
     using UnityEngine;

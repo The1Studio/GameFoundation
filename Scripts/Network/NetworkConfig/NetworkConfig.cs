@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.Network
+namespace GameFoundation.Scripts.Network.NetworkConfig
 {
     /// <summary>Our global network config for HttpRequest and SignalR.</summary>
     public class NetworkConfig

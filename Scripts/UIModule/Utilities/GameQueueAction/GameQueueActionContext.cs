@@ -1,9 +1,9 @@
-namespace GameFoundation.Scripts.Utilities.GameQueueAction
+namespace GameFoundation.Scripts.UIModule.Utilities.GameQueueAction
 {
     using System;
     using DG.Tweening;
-    using GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter;
-    using GameFoundation.Scripts.ScreenFlow.Managers;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
     using UnityEngine.Playables;
 
     public class GameQueueActionContext

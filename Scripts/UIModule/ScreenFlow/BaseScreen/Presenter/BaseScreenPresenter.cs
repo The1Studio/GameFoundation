@@ -1,11 +1,11 @@
-namespace GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter
 {
     using System.Threading.Tasks;
     using Cysharp.Threading.Tasks;
-    using GameFoundation.Scripts.MVP;
-    using GameFoundation.Scripts.ScreenFlow.BaseScreen.View;
-    using GameFoundation.Scripts.ScreenFlow.Managers;
-    using GameFoundation.Scripts.ScreenFlow.Signals;
+    using GameFoundation.Scripts.UIModule.MVP;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.View;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Signals;
     using GameFoundation.Scripts.Utilities.LogService;
     using UnityEngine;
     using Zenject;

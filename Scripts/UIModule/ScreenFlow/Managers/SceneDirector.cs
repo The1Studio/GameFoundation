@@ -1,9 +1,9 @@
-namespace GameFoundation.Scripts.ScreenFlow.Managers
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.Managers
 {
     using System.Collections.Generic;
     using Cysharp.Threading.Tasks;
     using GameFoundation.Scripts.AssetLibrary;
-    using GameFoundation.Scripts.ScreenFlow.Signals;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Signals;
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using Zenject;

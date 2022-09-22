@@ -1,11 +1,11 @@
-namespace GameFoundation.Scripts.ScreenFlow.Managers
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.Managers
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Reflection;
-    using GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter;
-    using GameFoundation.Scripts.ScreenFlow.Signals;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Signals;
     using LeTai.Asset.TranslucentImage;
     using UnityEngine;
     using UnityEngine.UI;

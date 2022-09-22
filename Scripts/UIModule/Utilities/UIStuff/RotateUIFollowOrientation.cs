@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.Utilities.UIStuff
+namespace GameFoundation.Scripts.UIModule.Utilities.UIStuff
 {
     using System.Collections.Generic;
     using DG.Tweening;
@@ -17,7 +17,7 @@ namespace GameFoundation.Scripts.Utilities.UIStuff
         
         private void Start()
         {
-            this.detectRotateOrientation.state.Subscribe(OnChangeOrientation);
+            this.detectRotateOrientation.state.Subscribe(this.OnChangeOrientation);
         }
         
         private void OnChangeOrientation(DeviceOrientation value)
@@ -50,7 +50,7 @@ namespace GameFoundation.Scripts.Utilities.UIStuff
         [Button("RotateScreen")]
         public void RotateScreen(DeviceOrientation value)
         {
-            detectRotateOrientation.state.Value = value;
+            this.detectRotateOrientation.state.Value = value;
         }
     }
 }

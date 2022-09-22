@@ -1,8 +1,8 @@
-namespace GameFoundation.Scripts.ScreenFlow.BaseScreen.View
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.View
 {
     using System;
     using Cysharp.Threading.Tasks;
-    using GameFoundation.Scripts.Utilities.UIStuff;
+    using GameFoundation.Scripts.UIModule.Utilities.UIStuff;
     using UnityEngine;
 
     [RequireComponent(typeof(CanvasGroup))]

@@ -1,8 +1,8 @@
-namespace GameFoundation.Scripts.ScreenFlow.BaseScreen.Presenter
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter
 {
     using System;
     using System.Threading.Tasks;
-    using GameFoundation.Scripts.MVP;
+    using GameFoundation.Scripts.UIModule.MVP;
     using UnityEngine;
     using Zenject;
 

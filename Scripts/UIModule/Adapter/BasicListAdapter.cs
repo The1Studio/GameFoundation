@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.Adapter
+namespace GameFoundation.Scripts.UIModule.Adapter
 {
     using System;
     using System.Collections;

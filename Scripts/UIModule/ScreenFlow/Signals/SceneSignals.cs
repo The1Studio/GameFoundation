@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.ScreenFlow.Signals
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.Signals
 {
     public class StartLoadingNewSceneSignal
     {

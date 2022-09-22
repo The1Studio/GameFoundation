@@ -1,4 +1,4 @@
-﻿namespace GameFoundation.Scripts.Utilities.Extension
+﻿namespace GameFoundation.Scripts.UIModule.Utilities.UIStuff
 {
     using System;
     using GameFoundation.Scripts.Utilities.ApplicationServices;

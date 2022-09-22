@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.ScreenFlow.Utils
+namespace GameFoundation.Scripts.UIModule.Utilities
 {
     using UnityEngine;
     using UnityEngine.UI;

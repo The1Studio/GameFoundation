@@ -1,10 +1,10 @@
-﻿namespace GameFoundation.Scripts.Network.ApiHandler
+﻿namespace GameFoundation.Scripts.Network.Authentication.ApiHandler
 {
-    using GameFoundation.Scripts.GameManager;
     using GameFoundation.Scripts.Models;
     using GameFoundation.Scripts.Network.Authentication;
     using GameFoundation.Scripts.Network.WebService;
     using GameFoundation.Scripts.Network.WebService.Requests;
+    using GameFoundation.Scripts.Utilities;
     using GameFoundation.Scripts.Utilities.LogService;
 
     public class LoginHttpRequest : BaseHttpRequest<LoginResponseData>

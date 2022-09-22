@@ -1,36 +1,39 @@
-
-using GameFoundation.Scripts.Utilities;
 using UnityEngine;
 
-[DisallowMultipleComponent]
-public class BaseMechSFX : MonoBehaviour
+namespace GameFoundation.Scripts.UIModule.Utilities.UIStuff
 {
-    [SerializeField] protected string sfxName;
-    
-    [Header("For Tool Set sfx")]
-    [SerializeField] private Object obj;
+    using GameFoundation.Scripts.Utilities;
 
-    protected void OnPlaySfx()
+    [DisallowMultipleComponent]
+    public class BaseMechSFX : MonoBehaviour
     {
-        if (string.IsNullOrEmpty(this.sfxName))
+        [SerializeField] protected string sfxName;
+    
+        [Header("For Tool Set sfx")]
+        [SerializeField] private Object obj;
+
+        protected void OnPlaySfx()
         {
-            Debug.LogError(gameObject.name + " missing sfx");
-            return;
+            if (string.IsNullOrEmpty(this.sfxName))
+            {
+                Debug.LogError(this.gameObject.name + " missing sfx");
+                return;
+            }
+
+            AudioManager.Instance.PlaySound(this.sfxName);
         }
 
-        AudioManager.Instance.PlaySound(this.sfxName);
-    }
-
-    /// <summary>
-    /// Tool set sfx Name (need game Object active to affect)
-    /// </summary>
-    [ContextMenu("SetSfxName")]
-    public void ConvertClipToString()
-    {
-        if (this.obj != null)
+        /// <summary>
+        /// Tool set sfx Name (need game Object active to affect)
+        /// </summary>
+        [ContextMenu("SetSfxName")]
+        public void ConvertClipToString()
         {
-            this.sfxName = this.obj.name;
-            this.obj     = null;
+            if (this.obj != null)
+            {
+                this.sfxName = this.obj.name;
+                this.obj     = null;
+            }
         }
     }
 }

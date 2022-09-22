@@ -1,7 +1,7 @@
-namespace GameFoundation.Scripts.ScreenFlow.Managers
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.Managers
 {
-    using GameFoundation.Scripts.ScreenFlow.Signals;
-    using GameFoundation.Scripts.Utilities.Extension;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Signals;
+    using GameFoundation.Scripts.UIModule.Utilities.UIStuff;
     using Zenject;
 
     public class ScreenFlowInstaller: Installer<ScreenFlowInstaller>

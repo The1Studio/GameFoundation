@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.Utilities.LoadImage
+namespace GameFoundation.Scripts.UIModule.Utilities.LoadImage
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.GameManager
+namespace GameFoundation.Scripts.Utilities
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;

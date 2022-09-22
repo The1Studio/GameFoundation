@@ -1,4 +1,4 @@
-﻿namespace GameFoundation.Scripts.Network
+﻿namespace GameFoundation.Scripts.Network.NetworkConfig
 {
     using UnityEngine;
 

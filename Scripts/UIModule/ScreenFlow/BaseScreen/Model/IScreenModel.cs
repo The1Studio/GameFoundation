@@ -1,6 +1,6 @@
-namespace GameFoundation.Scripts.ScreenFlow.BaseScreen.Model
+namespace GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Model
 {
-    using GameFoundation.Scripts.MVP;
+    using GameFoundation.Scripts.UIModule.MVP;
 
     /// <summary>
     /// The traditional Model:

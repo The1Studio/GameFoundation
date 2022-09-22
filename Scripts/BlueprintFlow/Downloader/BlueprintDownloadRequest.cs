@@ -1,4 +1,4 @@
-namespace Mech.Network.HttpRequest
+namespace GameFoundation.Scripts.BlueprintFlow.Downloader
 {
     using GameFoundation.Scripts.BlueprintFlow.BlueprintControlFlow;
     using GameFoundation.Scripts.Network.WebService;

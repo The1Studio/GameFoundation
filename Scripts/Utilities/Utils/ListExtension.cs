@@ -1,4 +1,4 @@
-namespace GameFoundation.Scripts.Utilities.Utils.Extension
+namespace GameFoundation.Scripts.Utilities.Utils
 {
     using System;
     using System.Collections.Generic;
