@@ -1,6 +1,5 @@
 namespace GameFoundation.Scripts.Network
 {
-    using GameFoundation.Editor.ServerConfig;
     using GameFoundation.Scripts.Network.Authentication;
     using GameFoundation.Scripts.Network.WebService;
     using GameFoundation.Scripts.Utilities.Extension;

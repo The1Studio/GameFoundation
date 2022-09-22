@@ -5,7 +5,7 @@ namespace GameFoundation.Scripts.Network.WebService
     using System.Text;
     using BestHTTP;
     using Cysharp.Threading.Tasks;
-    using GameFoundation.Scripts.GameManager;
+    using GameFoundation.Scripts.Models;
     using GameFoundation.Scripts.Network.WebService.Interface;
     using GameFoundation.Scripts.Utilities.LogService;
     using GameFoundation.Scripts.Utilities.Utils;
