@@ -1,12 +1,15 @@
 ﻿namespace GameFoundation.Scripts.Ads
 {
+    using System;
+
     public interface IAdsService
     {
-        bool IsAdsReady();
-        void InitializeAds();
-        void LoadAds();
-        void ShowBannerAds();
-        void ShowInterstitialAds();
-        void ShowRewardAds();
+        Action OnRewardSucceed { get; set; }
+        void   InitializeAds();
+        void   LoadAds();
+        void   ShowBannerAds();
+        void   HideBannerAds();
+        void   ShowInterstitialAds();
+        void   ShowRewardAds();
     }
 }

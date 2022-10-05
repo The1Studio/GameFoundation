@@ -3,67 +3,86 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Zenject;
+    using UnityEngine;
 
-    public class AdsManager : IInitializable
+    public class AdsManager
     {
+        #region Zenject
+
+        private readonly AdsConfig adsConfig;
+
+        #endregion
+
         private List<IAdsService> adsServices = new();
 
-        public void Initialize()
+        public AdsManager(AdsConfig adsConfig) { this.adsConfig = adsConfig; }
+
+        public bool IsConnection => Application.internetReachability != NetworkReachability.NotReachable;
+
+        public void InitializeAds()
         {
+            if (!this.IsConnection) return;
+
             foreach (var adsService in this.adsServices)
             {
                 adsService.InitializeAds();
+                adsService.LoadAds();
             }
         }
 
-        public void ShowAds(AdsType adsType)
+        private void InitAdsServices()
         {
-            switch (adsType)
+            var    unityAdsConfig = this.adsConfig.UnityAdsConfig;
+            string gameID;
+
+#if UNITY_IOS
+            gameID = unityAdsConfig.IOSGameID;
+#else
+            gameID = unityAdsConfig.androidGameID;
+#endif
+
+            if (this.adsConfig.UnityAdsEnable)
             {
-                case AdsType.Banner:
-                    this.ShowBannerAds();
-                    break;
-                case AdsType.Interstitial:
-                    this.ShowInterstitialAds();
-                    break;
-                case AdsType.Reward:
-                    this.ShowRewardAds();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(adsType), adsType, null);
+                this.adsServices.Add(new UnityAdsService(gameID, unityAdsConfig.bannerID, unityAdsConfig.interstitialID, unityAdsConfig.rewardID, unityAdsConfig.bannerPos));
+            }
+
+            if (this.adsConfig.AdMobEnable)
+            {
+                this.adsServices.Add(new AdsMobService());
             }
         }
 
-        private void ShowBannerAds()
+        public void ShowBannerAds()
         {
-            foreach (var adsService in this.adsServices.Where(adsService => adsService.IsAdsReady()))
-            {
-                adsService.ShowBannerAds();
-            }
+            if (!this.IsConnection) return;
+
+            this.adsServices.FirstOrDefault()?.ShowBannerAds();
         }
 
-        private void ShowInterstitialAds()
+        public void HideBannerAds()
         {
-            foreach (var adsService in this.adsServices.Where(adsService => adsService.IsAdsReady()))
+            foreach (var adsService in this.adsServices)
             {
-                adsService.ShowInterstitialAds();
+                adsService.HideBannerAds();
             }
         }
 
-        private void ShowRewardAds()
+        public void ShowInterstitialAds()
         {
-            foreach (var adsService in this.adsServices.Where(adsService => adsService.IsAdsReady()))
-            {
-                adsService.ShowRewardAds();
-            }
-        }
-    }
+            if (!this.IsConnection) return;
 
-    public enum AdsType
-    {
-        Banner,
-        Interstitial,
-        Reward
+            this.adsServices.FirstOrDefault()?.ShowInterstitialAds();
+        }
+
+        public void ShowRewardAds(Action onRewardSucceed)
+        {
+            if (!this.IsConnection) return;
+
+            var adsShow = this.adsServices.FirstOrDefault();
+            if (adsShow == null) return;
+
+            adsShow.ShowRewardAds();
+            adsShow.OnRewardSucceed = onRewardSucceed;
+        }
     }
 }

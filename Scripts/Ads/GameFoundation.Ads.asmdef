@@ -1,3 +1,17 @@
 {
-	"name": "GameFoundation.Ads"
+    "name": "GameFoundation.Ads",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ff6de30450f3748908ff580f6ec64d9a",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
