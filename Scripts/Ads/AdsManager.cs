@@ -62,7 +62,7 @@
         {
             if (!this.IsConnection) return;
 
-            this.adsServices.FirstOrDefault()?.ShowBannerAds();
+            this.adsServices.FirstOrDefault(adService => adService.IsBannerReady)?.ShowBannerAds();
         }
 
         public void HideBannerAds()
@@ -77,14 +77,14 @@
         {
             if (!this.IsConnection) return;
 
-            this.adsServices.FirstOrDefault()?.ShowInterstitialAds();
+            this.adsServices.FirstOrDefault(adService => adService.IsInterstitialReady)?.ShowInterstitialAds();
         }
 
         public void ShowRewardAds(Action onRewardSucceed)
         {
             if (!this.IsConnection) return;
 
-            var adsShow = this.adsServices.FirstOrDefault();
+            var adsShow = this.adsServices.FirstOrDefault(adService => adService.IsRewardReady);
             if (adsShow == null) return;
 
             adsShow.ShowRewardAds();

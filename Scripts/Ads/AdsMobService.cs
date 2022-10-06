@@ -1,7 +1,6 @@
 ﻿namespace GameFoundation.Scripts.Ads
 {
     using System;
-    using Cysharp.Threading.Tasks;
     using GoogleMobileAds.Api;
 
     public class AdsMobService : IAdsService
@@ -20,11 +19,13 @@
         private RewardedAd     rewardedAd;
         private AdRequest      adRequest;
 
-        private const float TimeOutRequestAds = 1f;
-
-
         public Action OnRewardSucceed { get; set; }
 
+        public bool IsBannerReady => this.bannerView != null;
+
+        public bool IsInterstitialReady => this.interstitialAd.IsLoaded();
+
+        public bool IsRewardReady => this.rewardedAd.IsLoaded();
         public void InitializeAds()
         {
             MobileAds.Initialize(_ => { });
@@ -49,29 +50,23 @@
         }
         private void OnUserEarnedReward(object sender, Reward e) { this.OnRewardSucceed.Invoke(); }
 
-        public void ShowBannerAds() { this.bannerView?.Show(); }
-
-        public void HideBannerAds() { this.bannerView?.Hide(); }
-
-        public async void ShowInterstitialAds()
+        public void ShowBannerAds()
         {
-            if (!this.interstitialAd.IsLoaded())
-            {
-                this.interstitialAd.LoadAd(this.adRequest);
-                await UniTask.Delay(TimeSpan.FromSeconds(TimeOutRequestAds));
-            }
+            this.bannerView.LoadAd(this.adRequest);
+            this.bannerView.Show();
+        }
 
+        public void HideBannerAds() { this.bannerView.Hide(); }
+
+        public void ShowInterstitialAds()
+        {
+            this.rewardedAd = new RewardedAd(this.adUnitID);
             this.interstitialAd.Show();
         }
 
-        public async void ShowRewardAds()
+        public void ShowRewardAds()
         {
-            if (!this.rewardedAd.IsLoaded())
-            {
-                this.rewardedAd.LoadAd(this.adRequest);
-                await UniTask.Delay(TimeSpan.FromSeconds(TimeOutRequestAds));
-            }
-
+            this.LoadReward();
             this.rewardedAd.Show();
         }
     }

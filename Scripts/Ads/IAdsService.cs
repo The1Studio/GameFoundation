@@ -4,7 +4,10 @@
 
     public interface IAdsService
     {
-        Action OnRewardSucceed { get; set; }
+        Action OnRewardSucceed     { get; set; }
+        bool   IsBannerReady       { get; }
+        bool   IsInterstitialReady { get; }
+        bool   IsRewardReady       { get; }
         void   InitializeAds();
         void   LoadAds();
         void   ShowBannerAds();

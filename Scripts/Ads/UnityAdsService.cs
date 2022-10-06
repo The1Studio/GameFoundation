@@ -1,7 +1,6 @@
 ﻿namespace GameFoundation.Scripts.Ads
 {
     using System;
-    using Cysharp.Threading.Tasks;
     using UnityEngine.Advertisements;
 
     public class UnityAdsService : IAdsService, IUnityAdsListener
@@ -27,20 +26,17 @@
         #region Inplement IAdsService
 
         public Action OnRewardSucceed { get; set; }
+        public bool   IsBannerReady   => Advertisement.IsReady(this.bannerAdsID);
+
+        public bool IsInterstitialReady => Advertisement.IsReady(this.interstitialAdsID);
+
+        public bool IsRewardReady => Advertisement.IsReady(this.rewardAdsID);
 
         public void InitializeAds()
         {
             Advertisement.Initialize(this.gameID);
             Advertisement.AddListener(this);
         }
-
-        public bool IsAdsReady()
-        {
-            return Advertisement.IsReady(this.bannerAdsID)
-                   || Advertisement.IsReady(this.interstitialAdsID)
-                   || Advertisement.IsReady(this.rewardAdsID);
-        }
-
 
         public void LoadAds()
         {
@@ -49,35 +45,23 @@
             Advertisement.Load(this.rewardAdsID);
         }
 
-        public async void ShowBannerAds()
+        public void ShowBannerAds()
         {
-            if (!Advertisement.IsReady(this.bannerAdsID))
-            {
-                await UniTask.Delay(TimeSpan.FromSeconds(TimeOutAdsRequest));
-            }
-
+            Advertisement.Load(this.bannerAdsID);
             Advertisement.Banner.SetPosition(this.bannerPos);
             Advertisement.Banner.Show(this.bannerAdsID);
         }
         public void HideBannerAds() { Advertisement.Banner.Hide(); }
 
-        public async void ShowInterstitialAds()
+        public void ShowInterstitialAds()
         {
-            if (!Advertisement.IsReady(this.interstitialAdsID))
-            {
-                await UniTask.Delay(TimeSpan.FromSeconds(TimeOutAdsRequest));
-            }
-
+            Advertisement.Load(this.interstitialAdsID);
             Advertisement.Show(this.interstitialAdsID);
         }
 
-        public async void ShowRewardAds()
+        public void ShowRewardAds()
         {
-            if (!Advertisement.IsReady(this.rewardAdsID))
-            {
-                await UniTask.Delay(TimeSpan.FromSeconds(TimeOutAdsRequest));
-            }
-
+            Advertisement.Load(this.rewardAdsID);
             Advertisement.Show(this.rewardAdsID);
         }
 
