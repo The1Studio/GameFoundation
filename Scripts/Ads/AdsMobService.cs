@@ -17,7 +17,6 @@
         private BannerView     bannerView;
         private InterstitialAd interstitialAd;
         private RewardedAd     rewardedAd;
-        private AdRequest      adRequest;
 
         public Action OnRewardSucceed { get; set; }
 
@@ -33,41 +32,51 @@
             this.bannerView     = new BannerView(this.adUnitID, AdSize.Banner, this.bannerPosition);
             this.interstitialAd = new InterstitialAd(this.adUnitID);
             this.rewardedAd     = new RewardedAd(this.adUnitID);
-            this.adRequest      = new AdRequest.Builder().Build();
         }
 
         public void LoadAds()
         {
-            this.bannerView.LoadAd(this.adRequest);
-            this.interstitialAd.LoadAd(this.adRequest);
+            this.LoadBanner();
+            this.LoadInterstitial();
             this.LoadReward();
+        }
+
+        private void LoadBanner()
+        {
+            var adRequest = new AdRequest.Builder().Build();
+            this.bannerView.OnAdClosed += this.ReloadBannerAds;
+            this.bannerView.LoadAd(adRequest);
+        }
+
+        private void LoadInterstitial()
+        {
+            var adRequest = new AdRequest.Builder().Build();
+            this.interstitialAd.OnAdClosed += this.ReloadInterstitialAds;
+            this.interstitialAd.LoadAd(adRequest);
         }
 
         private void LoadReward()
         {
+            var adRequest = new AdRequest.Builder().Build();
             this.rewardedAd.OnUserEarnedReward += this.OnUserEarnedReward;
-            this.rewardedAd.LoadAd(this.adRequest);
+            this.rewardedAd.OnAdClosed         += this.ReloadRewardAds;
+            this.rewardedAd.LoadAd(adRequest);
         }
+
+        private void ReloadBannerAds(object sender, EventArgs e) { this.LoadBanner(); }
+
+        private void ReloadInterstitialAds(object sender, EventArgs e) { this.LoadInterstitial(); }
+
+        private void ReloadRewardAds(object sender, EventArgs e) { this.LoadReward(); }
+
         private void OnUserEarnedReward(object sender, Reward e) { this.OnRewardSucceed.Invoke(); }
 
-        public void ShowBannerAds()
-        {
-            this.bannerView.LoadAd(this.adRequest);
-            this.bannerView.Show();
-        }
+        public void ShowBannerAds() { this.bannerView.Show(); }
 
         public void HideBannerAds() { this.bannerView.Hide(); }
 
-        public void ShowInterstitialAds()
-        {
-            this.rewardedAd = new RewardedAd(this.adUnitID);
-            this.interstitialAd.Show();
-        }
+        public void ShowInterstitialAds() { this.interstitialAd.Show(); }
 
-        public void ShowRewardAds()
-        {
-            this.LoadReward();
-            this.rewardedAd.Show();
-        }
+        public void ShowRewardAds() { this.rewardedAd.Show(); }
     }
 }

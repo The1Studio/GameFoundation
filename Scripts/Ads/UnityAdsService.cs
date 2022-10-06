@@ -40,30 +40,26 @@
 
         public void LoadAds()
         {
-            Advertisement.Load(this.bannerAdsID);
-            Advertisement.Load(this.interstitialAdsID);
-            Advertisement.Load(this.rewardAdsID);
+            if (!this.IsBannerReady)
+                Advertisement.Load(this.bannerAdsID);
+
+            if (!this.IsInterstitialReady)
+                Advertisement.Load(this.interstitialAdsID);
+
+            if (!this.IsRewardReady)
+                Advertisement.Load(this.rewardAdsID);
         }
 
         public void ShowBannerAds()
         {
-            Advertisement.Load(this.bannerAdsID);
             Advertisement.Banner.SetPosition(this.bannerPos);
             Advertisement.Banner.Show(this.bannerAdsID);
         }
         public void HideBannerAds() { Advertisement.Banner.Hide(); }
 
-        public void ShowInterstitialAds()
-        {
-            Advertisement.Load(this.interstitialAdsID);
-            Advertisement.Show(this.interstitialAdsID);
-        }
+        public void ShowInterstitialAds() { Advertisement.Show(this.interstitialAdsID); }
 
-        public void ShowRewardAds()
-        {
-            Advertisement.Load(this.rewardAdsID);
-            Advertisement.Show(this.rewardAdsID);
-        }
+        public void ShowRewardAds() { Advertisement.Show(this.rewardAdsID); }
 
         #endregion
 
@@ -81,6 +77,8 @@
             {
                 this.OnRewardSucceed.Invoke();
             }
+
+            this.LoadAds();
         }
 
         #endregion
