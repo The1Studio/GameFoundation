@@ -23,6 +23,8 @@
         {
             if (!this.IsConnection) return;
 
+            this.InitAdsServices();
+
             foreach (var adsService in this.adsServices)
             {
                 adsService.InitializeAds();
@@ -33,12 +35,16 @@
         private void InitAdsServices()
         {
             var    unityAdsConfig = this.adsConfig.UnityAdsConfig;
+            var    admobConfig    = this.adsConfig.AdmobConfig;
+            string adsUnitID;
             string gameID;
 
 #if UNITY_IOS
-            gameID = unityAdsConfig.IOSGameID;
+            gameID = unityAdsConfig.iosGameID;
+            adsUnitID = admobConfig.iosAdsID;
 #else
-            gameID = unityAdsConfig.androidGameID;
+            adsUnitID = admobConfig.androidAdsID;
+            gameID    = unityAdsConfig.androidGameID;
 #endif
 
             if (this.adsConfig.UnityAdsEnable)
@@ -48,7 +54,7 @@
 
             if (this.adsConfig.AdMobEnable)
             {
-                this.adsServices.Add(new AdsMobService());
+                this.adsServices.Add(new AdsMobService(adsUnitID, admobConfig.bannerPosition));
             }
         }
 
