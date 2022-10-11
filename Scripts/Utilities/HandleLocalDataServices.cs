@@ -57,7 +57,13 @@ namespace GameFoundation.Scripts.Utilities
         {
             foreach (var localData in this.localDataCaches)
             {
-                PlayerPrefs.SetString(localData.Key, JsonConvert.SerializeObject(localData.Value));
+                // Vector3 has a loop normalized that was looped 
+                // https://stackoverflow.com/questions/13510204/json-net-self-referencing-loop-detected
+                // https://www.newtonsoft.com/json/help/html/ReferenceLoopHandlingIgnore.htm
+                PlayerPrefs.SetString(localData.Key, JsonConvert.SerializeObject(localData.Value, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                }));
             }
 
             PlayerPrefs.Save();

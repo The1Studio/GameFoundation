@@ -152,12 +152,10 @@ namespace GameFoundation.Scripts.UIModule.Adapter
         public async void InitItemAdapter(List<TModel> modelList)
         {
             this.Models = new SimpleDataHelper<TModel>(this);
-            this.Models.InsertItems(0, modelList);
-
             this.presenters = new List<TPresenter>();
-            await UniTask.WaitUntil(() => this.IsInitialized);
 
-            this.ResetItems(modelList.Count);
+            await UniTask.WaitUntil(() => this.IsInitialized);
+            this.Models.InsertItems(0, modelList);
         }
     }
 
